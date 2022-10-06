@@ -5,7 +5,7 @@
 </head>
 <body>
     <div>
-        <h3>Data was entered incorrectly. Return to <a href="${pageContext.request.contextPath}">registration form page</a></h3>
+        <h3>Data was entered incorrectly. Return to <a href="${pageContext.request.contextPath}/jsp/form-for-personal-info.jsp">registration form page</a></h3>
     </div>
 </body>
 </html>
