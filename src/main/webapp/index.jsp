@@ -28,10 +28,13 @@
  <body>
   <div id="centerLayer">
     <h3>This is main page</h3><br>
-    <a href="${pageContext.request.contextPath}/firstExample">Info about servlet</a><br>
-    <a href="${pageContext.request.contextPath}/counterText">Servlet with counter text</a><br>
-    <a href="${pageContext.request.contextPath}/counterImg">Servlet with counter img</a><br>
-    <a href="${pageContext.request.contextPath}/jsp/form-for-personal-info.jsp">Personal info</a><br>
+    <a href="${pageContext.request.contextPath}/firstExample">Info about servlet (task 8)</a><br>
+    <a href="${pageContext.request.contextPath}/counterText">Servlet with counter text (task 9)</a><br>
+    <a href="${pageContext.request.contextPath}/jsp/form-for-personal-info.jsp">Personal info (task 10)</a><br>
+    <a href="${pageContext.request.contextPath}/userAgent">User-Agent (task 11)</a><br>
+    <a href="${pageContext.request.contextPath}/counterImg">Servlet with counter img (task 12)</a><br>
+
+
   </div>
  </body>
 </html>

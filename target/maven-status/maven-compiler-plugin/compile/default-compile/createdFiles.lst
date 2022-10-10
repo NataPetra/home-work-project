@@ -1,6 +1,7 @@
 serv\CounterServletImg.class
-serv\CounterServletText.class
 serv\FirstServlet.class
 serv\RegistrationServlet.class
 classes\FileForCounter.class
+serv\CounterServletText.class
+serv\UserAgentServlet.class
 classes\Counter.class
