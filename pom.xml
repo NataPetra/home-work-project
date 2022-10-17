@@ -42,6 +42,27 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
+        <version>3.10.3</version>
+        <configuration>
+          <changeLogFile>src/main/resources/changelog-master.xml</changeLogFile>
+          <driver>com.mysql.jdbc.Driver</driver>
+          <url>jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true&amp;serverTimezone=UTC</url>
+          <username>root</username>
+          <password>root</password>
+        </configuration>
+        <executions>
+          <execution>
+            <id>Update DB</id>
+            <goals>
+              <goal>update</goal>
+            </goals>
+            <phase>process-resources</phase>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -61,6 +82,11 @@
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.22</version>
     </dependency>
   </dependencies>
 
