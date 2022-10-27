@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="NataPetra">
+        <sql>
+            create table if not exists test.expenses(
+            id int not null primary key,
+            data varchar(255),
+            receiver varchar(255),
+            value float(10,2)
+            )
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="NataPetra">
+        <sql>
+            CREATE TABLE if not exists test.receiver (
+            num INT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(200) NOT NULL,
+            PRIMARY KEY (num));
+        </sql>
+    </changeSet>
+
+    <changeSet id="3" author="NataPetra">
+        <sql>
+            CREATE TABLE if not exists test.expense (
+            id INT NOT NULL AUTO_INCREMENT,
+            pay_date VARCHAR(45) NOT NULL,
+            receiver_id INT NOT NULL,
+            value DECIMAL(10,2) NOT NULL,
+            PRIMARY KEY (id),
+            INDEX fk_receiver_idx (receiver_id ASC),
+            CONSTRAINT fk_receiver
+            FOREIGN KEY (receiver_id)
+            REFERENCES test.receiver (num)
+            ON DELETE NO ACTION
+            ON UPDATE NO ACTION);
+        </sql>
+    </changeSet>
+
+    <changeSet id="4" author="NataPetra">
+        <sql>
+            INSERT INTO test.receiver (num, name) VALUES ('1', 'shop');
+            INSERT INTO test.receiver (num, name) VALUES ('2', 'phone');
+            INSERT INTO test.receiver (num, name) VALUES ('3', 'flat');
+        </sql>
+    </changeSet>
+
+    <changeSet id="5" author="NataPetra">
+        <sql>
+            INSERT INTO test.expense (id, pay_date, receiver_id, value) VALUES ('1', '2020-12-10', '1', '60');
+            INSERT INTO test.expense (id, pay_date, receiver_id, value) VALUES ('2', '2020-10-3', '3', '90');
+            INSERT INTO test.expense (id, pay_date, receiver_id, value) VALUES ('3', '2020-8-18', '3', '70');
+            INSERT INTO test.expense (id, pay_date, receiver_id, value) VALUES ('4', '2020-9-6', '2', '120');
+        </sql>
+    </changeSet>
+
+    <changeSet id="6" author="NataPetra">
+        <sql>
+            INSERT INTO test.expenses (id, data, receiver, value) VALUES (1, '10-7-2009', 'Phone', 12.15);
+            INSERT INTO test.expenses (id, data, receiver, value) VALUES (2, '12-7-2009', 'Flat', 150.5);
+            INSERT INTO test.expenses (id, data, receiver, value) VALUES (3, '15-7-2009', 'Shop', 201.60);
+        </sql>
+    </changeSet>
+
+    <changeSet id="7" author="NataPetra">
+        <sql>
+            INSERT INTO test.expense (id, pay_date, receiver_id, value) VALUES ('5', '2020-10-3', '1', '120');
+            INSERT INTO test.expense (id, pay_date, receiver_id, value) VALUES ('6', '2020-12-10', '2', '90');
+            INSERT INTO test.expense (id, pay_date, receiver_id, value) VALUES ('7', '2020-12-10', '3', '80');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
