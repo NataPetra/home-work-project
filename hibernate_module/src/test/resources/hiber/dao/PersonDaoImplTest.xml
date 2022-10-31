@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <Person id="1" age="20" name="Ivan" surname="Ivanov"/>
+    <Person id="2" age="25" name="Pavel" surname="Petrov"/>
+    <Person id="3" age="30" name="Nata" surname="Petrova"/>
+    <Person id="4" age="36" name="Liz" surname="Sidorova"/>
+    <Person id="5" age="70" name="Max" surname="Tooth"/>
+</dataset>
