@@ -24,6 +24,10 @@ public class RegistrationServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/jsp/error.jsp");
             return;
         }
+        if (!address.matches("^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$")){
+            resp.sendRedirect(req.getContextPath()+"/jsp/error.jsp");
+            return;
+        }
         PrintWriter writer = resp.getWriter();
         writer.println("<h1>Your personal information</h1>");
         writer.println("<h3>User name: " + username + "</h3>");
