@@ -123,5 +123,24 @@ public class PersonDaoImplTest extends BaseDaoTest {
     @Test
     @SneakyThrows
     public void testDelete() {
+        //Given
+        Person person = new Person();
+        person.setName("Kate");
+        person.setAge(60);
+        person.setSurname("Kit");
+
+        //When
+        targetObject.create(person);
+        Connection conn = testMysqlJdbcDataSource.getConnection();
+        ResultSet rs = conn.createStatement().executeQuery("select count(*) from Person;");
+        rs.next();
+        int sizeBeforeDelete = rs.getInt(1) - 1;
+
+        //Then
+        targetObject.delete(person);
+        rs = conn.createStatement().executeQuery("select count(*) from Person;");
+        rs.next();
+        int actualSize = rs.getInt(1);
+        assertEquals(sizeBeforeDelete, actualSize);
     }
 }

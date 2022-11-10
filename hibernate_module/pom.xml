@@ -99,6 +99,17 @@
                         </goals>
                         <phase>process-resources</phase>
                     </execution>
+                    <execution>
+                        <id>Update test DB</id>
+                        <configuration>
+                            <propertyFile>src/test/resources/person_test.jdbc.properties</propertyFile>
+                            <changeLogFile>src/main/resources/changelog-master.xml</changeLogFile>
+                        </configuration>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

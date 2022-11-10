@@ -5,28 +5,41 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-<!--    <changeSet id="1" author="NataPetra">-->
-<!--        <sql>-->
-<!--            create table if not exists Person (-->
-<!--            id integer not null,-->
-<!--            age integer,-->
-<!--            name varchar(255),-->
-<!--            surname varchar(255),-->
-<!--            primary key (id)-->
-<!--            )-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+    <changeSet id="1" author="NataPetra">
+        <sql>
+            create table if not exists Person (
+            id integer not null,
+            age integer,
+            name varchar(255),
+            surname varchar(255),
+            primary key (id)
+            )
+        </sql>
+    </changeSet>
 
-<!--    <changeSet id="2" author="NataPetra">-->
-<!--        <sql>-->
-<!--            create table if not exists person_test.Person (-->
-<!--            id integer not null,-->
-<!--            age integer,-->
-<!--            name varchar(255),-->
-<!--            surname varchar(255),-->
-<!--            primary key (id)-->
-<!--            )-->
-<!--        </sql>-->
-<!--    </changeSet>-->
+    <changeSet id="2" author="NataPetra">
+        <sql>
+            CREATE TABLE history
+            (
+            id INT AUTO_INCREMENT,
+            personId INT NOT NULL,
+            information VARCHAR(255) NOT NULL,
+            mydate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY(id)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="3" author="NataPetra">
+        <sql>
+            CREATE TRIGGER Person_INSERT
+            AFTER INSERT
+            ON Person FOR EACH ROW
+
+              INSERT INTO history(personId, information)
+              VALUES(NEW.id,CONCAT('Add user: ', NEW.name, '  ' ,NEW.surname));
+
+        </sql>
+    </changeSet>
 
 </databaseChangeLog>
