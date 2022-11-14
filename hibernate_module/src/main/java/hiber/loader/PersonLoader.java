@@ -14,18 +14,27 @@ public class PersonLoader {
         Person person1 = new Person(null, 30, "John", "Smith");
         Person person2 = new Person(null, 25, "Jane", "Smith");
         Person person3 = new Person(null, 40, "Kat", "Smith");
+
         EntityManager em = HibernateUtil.getInstance();
         em.getTransaction().begin();
         em.persist(person1);
-        em.persist(person2);
         em.getTransaction().commit();
         HibernateUtil.close();
+
+        PersonDao personDao = new PersonDaoImpl();
+        personDao.create(person2);
+        personDao.create(person3);
+
         System.out.println(loadingWithGet(1));
         System.out.println(loadingWithLoad(2));
-        System.out.println(loadingWithGet(3));
-        System.out.println(loadingWithLoad(4));
-        PersonDao personDao = new PersonDaoImpl();
-        personDao.create(person3);
+        System.out.println(loadingWithGet(8));
+        System.out.println(loadingWithLoad(8));
+
+        Person person4 = new Person(null, 18, "Mat", "Smith");
+        personDao.create(person4);
+        Person person5 = personDao.getPerson(4);
+        person5.setName("Met");
+        personDao.update(person5);
         personDao.delete(person3);
     }
 

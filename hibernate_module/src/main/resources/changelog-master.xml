@@ -7,7 +7,17 @@
 
     <changeSet id="1" author="NataPetra">
         <sql>
-            create table if not exists Person (
+            create table hibernate_sequence (
+            next_val bigint
+            );
+
+            INSERT INTO hibernate_sequence VALUES (1);
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="NataPetra">
+        <sql>
+            create table Person (
             id integer not null,
             age integer,
             name varchar(255),
@@ -17,7 +27,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="2" author="NataPetra">
+    <changeSet id="3" author="NataPetra">
         <sql>
             CREATE TABLE history
             (
@@ -30,16 +40,37 @@
         </sql>
     </changeSet>
 
-    <changeSet id="3" author="NataPetra">
+    <changeSet id="4" author="NataPetra">
         <sql>
             CREATE TRIGGER Person_INSERT
             AFTER INSERT
             ON Person FOR EACH ROW
 
               INSERT INTO history(personId, information)
-              VALUES(NEW.id,CONCAT('Add user: ', NEW.name, '  ' ,NEW.surname));
+              VALUES(NEW.id, CONCAT('Add user: ', NEW.name, '  ' ,NEW.surname)
 
+            );
         </sql>
     </changeSet>
+
+    <changeSet id="5" author="NataPetra">
+        <sql>
+            CREATE TRIGGER Person_UPDATE
+            AFTER UPDATE
+            ON Person FOR EACH ROW
+
+            INSERT INTO history(personId, information)
+            VALUES (NEW.id, CONCAT('Update user: ', OLD.name, '  ' ,OLD.surname, ' - ', NEW.name, '  ' ,NEW.surname)
+            );
+        </sql>
+    </changeSet>
+
+<!--    <changeSet id="5" author="NataPetra">-->
+<!--        <sql>-->
+<!--            CREATE TRIGGER before_update-->
+<!--            BEFORE UPDATE ON t_person FOR EACH ROW-->
+<!--            SET NEW.FIRSTNAME = LOWER(NEW.FIRSTNAME);-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>

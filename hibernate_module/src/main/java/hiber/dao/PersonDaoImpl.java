@@ -6,11 +6,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PersonDaoImpl implements PersonDao{
@@ -37,6 +32,15 @@ public class PersonDaoImpl implements PersonDao{
             if (tx != null) tx.rollback();
             throw e;
         }
+    }
+
+    @Override
+    public Person getPerson(Integer id) {
+        Session session = MysqlSessionFactory.getInstance().openSession();
+        session.beginTransaction();
+        Person person = session.get(Person.class, id);
+        session.close();
+        return person;
     }
 
     @Override

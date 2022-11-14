@@ -10,6 +10,7 @@
     <modules>
         <module>hibernate_module</module>
         <module>servlet_sql_module</module>
+        <module>ORM_module</module>
     </modules>
     <groupId>it.academy</groupId>
     <artifactId>home-work-project</artifactId>

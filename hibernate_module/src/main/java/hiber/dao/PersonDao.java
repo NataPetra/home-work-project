@@ -8,6 +8,8 @@ public interface PersonDao {
 
     void create(Person person);
 
+    Person getPerson(Integer id);
+
     List<Person> readAll();
 
     void update(Person person);
