@@ -1,14 +1,13 @@
 package orm.task_6.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import orm.task_6.model.task7.AnimalDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -28,4 +27,19 @@ public class Animal implements Serializable {
 
     @Column
     private String nickname;
+
+    private AnimalDetails animalDetails;
+
+    @Override
+    public String toString() {
+        return "Animal: " +
+                "id=" + id +
+                ", kindOfAnimal='" + kindOfAnimal + '\'' +
+                ", age=" + age +
+                ", nickname='" + nickname + '\'' +
+                ", gender='" + animalDetails.getGender() + '\'' +
+                ", color='" + animalDetails.getColor() + '\'' +
+                ", height=" + animalDetails.getHeight() +
+                ';';
+    }
 }
