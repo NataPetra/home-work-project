@@ -33,7 +33,7 @@ public class SubclassDaoImpl implements SubclassTableDao {
     @Override
     public List readAll() {
         Session session = sessionFactory.openSession();
-        List persons = session.createQuery("from Person3", Person2.class).list();
+        List persons = session.createQuery("from Person2", Person2.class).list();
         session.close();
         return persons;
     }

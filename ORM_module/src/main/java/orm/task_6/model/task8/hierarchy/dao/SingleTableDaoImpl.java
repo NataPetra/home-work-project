@@ -33,7 +33,7 @@ public class SingleTableDaoImpl implements SingleTableDao{
     @Override
     public List readAll() {
         Session session = sessionFactory.openSession();
-        List persons = session.createQuery("from Person3", Person.class).list();
+        List persons = session.createQuery("from Person", Person.class).list();
         session.close();
         return persons;
     }
