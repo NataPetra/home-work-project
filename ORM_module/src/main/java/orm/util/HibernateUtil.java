@@ -1,15 +1,19 @@
 package orm.util;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import orm.task_6.model.Animal;
 import orm.task_6.model.Man;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import orm.task_6.model.task8.concrete.Person3;
+import orm.task_6.model.task8.concrete.Student3;
+import orm.task_6.model.task8.concrete.Teacher3;
+import orm.task_6.model.task8.hierarchy.Person;
+import orm.task_6.model.task8.hierarchy.Student;
+import orm.task_6.model.task8.hierarchy.Teacher;
+import orm.task_6.model.task8.subclass.Person2;
+import orm.task_6.model.task8.subclass.Student2;
+import orm.task_6.model.task8.subclass.Teacher2;
 
 public class HibernateUtil {
 
@@ -21,6 +25,15 @@ public class HibernateUtil {
             Configuration configuration = new Configuration()
                     .addAnnotatedClass(Man.class)
                     .addAnnotatedClass(Animal.class)
+                    .addAnnotatedClass(Person.class)
+                    .addAnnotatedClass(Student.class)
+                    .addAnnotatedClass(Teacher.class)
+                    .addAnnotatedClass(Person2.class)
+                    .addAnnotatedClass(Student2.class)
+                    .addAnnotatedClass(Teacher2.class)
+                    .addAnnotatedClass(Person3.class)
+                    .addAnnotatedClass(Student3.class)
+                    .addAnnotatedClass(Teacher3.class)
                     .configure();
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties());
