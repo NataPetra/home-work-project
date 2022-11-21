@@ -8,7 +8,8 @@ public class MainTest {
 //        System.out.println(dao.amountPerDayWithTheHighestPayment());
 //        System.out.println(dao.largestPaymentForTheLargestAmount());
         //dao.getExpenses().forEach(System.out::println);
-        dao.getReceivers().forEach(System.out::println);
+        System.out.println(dao.getReceiver(1));
+        //dao.getReceivers().forEach(System.out::println);
 
     }
 }

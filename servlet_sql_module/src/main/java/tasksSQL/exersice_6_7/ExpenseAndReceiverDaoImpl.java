@@ -1,6 +1,5 @@
 package tasksSQL.exersice_6_7;
 
-import tasksSQL.Expenses;
 import tasksSQL.MysqlConnection;
 
 import java.math.BigDecimal;
@@ -38,8 +37,10 @@ public class ExpenseAndReceiverDaoImpl implements ExpenseAndReceiverDao {
         try (Connection connection = dataSource.getConnection();
              Statement statement = connection.createStatement()) {
             final ResultSet resultSet = statement.executeQuery("SELECT num, name FROM receiver WHERE num=" + num + ";");
-            receiver.setNum(resultSet.getInt("num"));
-            receiver.setName(resultSet.getString("name"));
+            while (resultSet.next()) {
+                receiver.setNum(resultSet.getInt("num"));
+                receiver.setName(resultSet.getString("name"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

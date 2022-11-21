@@ -36,10 +36,17 @@ public class PersonDaoImpl implements PersonDao{
 
     @Override
     public Person getPerson(Integer id) {
-        Session session = MysqlSessionFactory.getInstance().openSession();
-        session.beginTransaction();
-        Person person = session.get(Person.class, id);
-        session.close();
+        Transaction tx = null;
+        Person person;
+        try (Session sess = sessionFactory.openSession()){
+            tx = sess.beginTransaction();
+            person = sess.get(Person.class, id);
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (tx != null) tx.rollback();
+            throw e;
+        }
         return person;
     }
 
