@@ -10,43 +10,33 @@
 
     <!-- scope сколько бинов создает спринг -->
 
-        <bean name="animal" class="my.spring.beans.Animal" scope="singleton" init-method="init" destroy-method="destroy">
-            <property name="kind" value="cat"/>
-            <property name="nickname" value="Mia"/>
-            <property name="age" value="2"/>
-        </bean>
+    <bean name="animal" class="my.spring.task2.beans.Animal" scope="singleton" init-method="init" destroy-method="destroy">
+        <property name="kind" value="cat"/>
+        <property name="nickname" value="Mia"/>
+        <property name="age" value="2"/>
+    </bean>
 
+    <!-- АВТОСВЯЗЫВАНИЕ ПО ИМЕНИ -->
+    <bean name="parent" class="my.spring.task7.beans.Parent" scope="prototype"
+          autowire="byName">
+    </bean>
 
-<!--    <bean name="person" class="my.first.beans.Person" scope="singleton" init-method="init" destroy-method="destroy">-->
-<!--        <property name="name" value="Jones"/>-->
-<!--        <property name="secondName" value="Ivanov"/>-->
-<!--        <property name="homeAddress" ref="address"/>-->
+    <!-- АВТОСВЯЗЫВАНИЕ ПО ТИПУ -->
+    <bean name="parent2" class="my.spring.task7.beans.Parent" scope="prototype"
+          autowire="byType">
+    </bean>
 
-<!--        <property name="children">-->
-<!--            <map>-->
-<!--                <entry key="1" value-ref="child1"/>-->
-<!--                <entry key="2" value-ref="child2"/>-->
-<!--            </map>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <!-- АВТОСВЯЗЫВАНИЕ ПО КОНСТРУКТОРУ -->
+    <bean name="parent3" class="my.spring.task7.beans.Parent" scope="prototype"
+          autowire="constructor">
+    </bean>
 
-<!--    <bean name="child1" class="my.first.beans.Person"-->
-<!--          p:name="Ivan" p:secondName="Ivanov" p:homeAddress-ref="address">-->
-<!--    </bean>-->
+    <!-- АВТОСВЯЗЫВАНИЕ ПО УМОЛЧАНИЮ -->
+    <bean name="parent4" class="my.spring.task7.beans.Parent" scope="prototype"
+          >
+    </bean>
 
-<!--    <bean name="child2" class="my.first.beans.Person"-->
-<!--          p:name="Petr" p:secondName="Ivanov" p:homeAddress-ref="address">-->
-<!--    </bean>-->
-
-<!--    <bean name="address" class="my.first.beans.Address">-->
-<!--        <constructor-arg index="0" value="123"/>-->
-<!--        <property name="phoneNumbers">-->
-<!--            <list>-->
-<!--                <value>123</value>-->
-<!--                <value>1234</value>-->
-<!--                <value>12345</value>-->
-<!--            </list>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <bean name="child" class="my.spring.task7.beans.Child" scope="singleton" p:name="Ira">
+    </bean>
 
 </beans>

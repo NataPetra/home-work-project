@@ -1,4 +1,4 @@
-package my.spring.beans;
+package my.spring.task2.beans;
 
 import lombok.Getter;
 import lombok.Setter;
