@@ -15,18 +15,18 @@ public class ThreadsCounter {
                 = new AnnotationConfigApplicationContext(DataConfig.class, CounterDaoImpl.class, CounterService.class)
                 .getBean("counterService", CounterService.class);
 
-        service.createCount(counter);
+        //service.createCount(counter);
 
         List<Thread> list = new ArrayList<>();
 
         Runnable r = () -> {
-            for (int i = 0; i < 10; i++) {
+//            for (int i = 0; i < 10; i++) {
                 service.updateCount();
                 System.out.println("I work");
-            }
+//            }
         };
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10000; i++) {
             Thread thread = new Thread(r);
             System.out.println("New Thread");
             list.add(thread);
