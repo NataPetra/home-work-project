@@ -12,6 +12,7 @@
         <module>servlet_sql_module</module>
         <module>ORM_module</module>
         <module>spring</module>
+        <module>spring_hibernate</module>
     </modules>
     <groupId>it.academy</groupId>
     <artifactId>home-work-project</artifactId>
