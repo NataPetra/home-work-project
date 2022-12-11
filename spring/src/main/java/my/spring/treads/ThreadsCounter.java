@@ -1,6 +1,6 @@
 package my.spring.treads;
 
-import my.spring.util.DataConfig;
+import my.spring.util_task10.DataConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;

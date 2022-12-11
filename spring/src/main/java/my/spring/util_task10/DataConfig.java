@@ -1,4 +1,4 @@
-package my.spring.util;
+package my.spring.util_task10;
 
 import lombok.SneakyThrows;
 import my.spring.task2.beans.Animal;
@@ -16,7 +16,9 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan(basePackages = "my.spring.beans")
+@ComponentScan(basePackages = "my.spring.beans", includeFilters =
+@ComponentScan.Filter(type = FilterType.ANNOTATION,
+        classes = {Animal.class}))
 @PropertySource(value = {
         "classpath:/spring.jdbc.properties",
         "classpath:/hibernate.properties"}

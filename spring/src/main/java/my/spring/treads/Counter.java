@@ -1,10 +1,7 @@
 package my.spring.treads;
 
 import lombok.*;
-import my.spring.util.DataConfig;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

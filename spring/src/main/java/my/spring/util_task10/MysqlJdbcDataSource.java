@@ -1,11 +1,11 @@
-package my.spring.util;
+package my.spring.util_task10;
 
 import lombok.SneakyThrows;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
 
-import static my.spring.util.DataConfig.JDBC_PROPERTIES_FILE_NAME;
+import static my.spring.util_task10.DataConfig.JDBC_PROPERTIES_FILE_NAME;
 
 public class MysqlJdbcDataSource {
 
